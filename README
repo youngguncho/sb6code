@@ -1,3 +1,10 @@
+Fork version of OpenGL SuperBible
+ - fix typo in cmakelist
+ - fix library include error
+   (glfw should be built before main sb6 complie)
+ - add missing media files from sb7
+
+
 OpenGL SuperBible Example Code
 ------------------------------
 
