@@ -1,0 +1,7 @@
+bin/*
+extern/glfw-2.7.6/examples/*
+extern/glfw-2.7.6/tests/*
+CMakeFiles
+CMakeCache.txt
+cmake_install.cmake
+Makefile

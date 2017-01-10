@@ -3,6 +3,7 @@ cmake_minimum_required (VERSION 2.6)
 project (SuperBible6)
 
 LINK_DIRECTORIES( ${CMAKE_SOURCE_DIR}/lib )
+LINK_DIRECTORIES( ${CMAKE_SOURCE_DIR}/extern/glfw-2.7.6/lib/x11 )
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
@@ -123,6 +124,10 @@ endif()
 #  target_link_libraries(xraw GL X11 m)
 #endif(UNIX)
 
+include_directories( include )
+include_directories( extern/glfw-2.7.6/include )
+
+
 foreach(EXAMPLE ${EXAMPLES})
   add_executable(${EXAMPLE} WIN32 src/${EXAMPLE}/${EXAMPLE}.cpp)
   target_link_libraries(${EXAMPLE} ${COMMON_LIBS})
@@ -136,8 +141,7 @@ IF (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_LINUX")
 ENDIF (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
-include_directories( include )
-include_directories( extern/glfw-2.7.6/include )
+
 
 ADD_CUSTOM_TARGET(debug ${CMAKE_COMMAND} -DCMAKE_BUILD_TYPE:STRING=Debug ${PROJECT_SOURCE_DIR})
 ADD_CUSTOM_TARGET(release ${CMAKE_COMMAND} -DCMAKE_BUILD_TYPE:STRING=Release ${PROJECT_SOURCE_DIR})
